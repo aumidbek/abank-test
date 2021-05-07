@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asakabank.UserApi", "Asakabank.UserApi\Asakabank.UserApi.csproj", "{48E52071-E63A-4CFA-A538-9CFC5C638342}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48E52071-E63A-4CFA-A538-9CFC5C638342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E52071-E63A-4CFA-A538-9CFC5C638342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E52071-E63A-4CFA-A538-9CFC5C638342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E52071-E63A-4CFA-A538-9CFC5C638342}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94ED53BA-89A1-4E0E-98C3-A5164C1615FE}
+	EndGlobalSection
+EndGlobal
