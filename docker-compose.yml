@@ -1,0 +1,49 @@
+version: '3.4'
+
+networks:
+  asakabank.userapi-dev:
+    driver: bridge 
+
+services:
+  asakabank.userapi:
+    image: ${DOCKER_REGISTRY-}asakabankuserapi
+    depends_on:
+      - "postgres_image"
+    build:
+      context: .
+      dockerfile: Asakabank.UserApi/Dockerfile
+    ports:
+      - "3000:80"
+      - "3030:443"
+    #environment:
+      #DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=userapidb;username=postgres;password=postgres"
+    networks:
+      - asakabank.userapi-dev  
+  
+  postgres_image:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+      #- ./Asakabank.UserApi/dbscripts/seed.sql :/docker-entrypoint-initdb.d/seed.sql
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "userapidb"
+    networks:
+      - asakabank.userapi-dev
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin@pgadmin.org
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - 5050:80
+    restart: unless-stopped
+    volumes:
+      - pgadmin:/root/.pgadmin
+volumes:
+  db_volume:
+  pgadmin:

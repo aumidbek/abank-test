@@ -1,37 +1,54 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
+using Asakabank.UserApi.Base;
+using Asakabank.UserApi.Core;
+using Asakabank.UserApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
-namespace Asakabank.UserApi.Controllers
-{
+namespace Asakabank.UserApi.Controllers {
     [ApiController]
     [Route("[controller]")]
-    public class RegistrationController : ControllerBase
-    {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
+    public class RegistrationController : ControllerBase {
         private readonly ILogger<RegistrationController> _logger;
-
-        public RegistrationController(ILogger<RegistrationController> logger)
-        {
+        private readonly DataContext _context;
+        private readonly IBlogService _blogService;
+        public RegistrationController(ILogger<RegistrationController> logger, IBlogService blogService) {
             _logger = logger;
+            _blogService = blogService;
         }
+
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<IActionResult> Get(Guid id)
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            var blog = await _blogService.Get(id);
+
+            return Ok(blog);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Blog blog)
+        {
+            var blogId = await _blogService.Create(blog);
+
+            return Ok(blogId);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(Blog blog)
+        {
+            await _blogService.Update(blog);
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _blogService.Delete(id);
+
+            return Ok();
         }
     }
 }

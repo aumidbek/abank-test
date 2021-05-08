@@ -27,3 +27,16 @@ D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\obj\Debug\net5.0\Asakabank.
 D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\obj\Debug\net5.0\ref\Asakabank.UserApi.dll
 D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\obj\Debug\net5.0\Asakabank.UserApi.pdb
 D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\obj\Debug\net5.0\Asakabank.UserApi.genruntimeconfig.cache
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Npgsql.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Asakabank.Base.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\AutoMapper.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Asakabank.Base.pdb
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Humanizer.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll

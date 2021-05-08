@@ -1,0 +1,76 @@
+networks:
+  asakabank.userapi-dev:
+    driver: bridge
+services:
+  asakabank.userapi:
+    build:
+      context: D:\Projects\VisualStudio\Asakabank
+      dockerfile: Asakabank.UserApi/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Asakabank.UserApi
+      target: base
+    container_name: Asakabank.UserApi
+    depends_on:
+      postgres_image:
+        condition: service_started
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: ''
+    image: asakabankuserapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net5.0/Asakabank.UserApi.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      asakabank.userapi-dev: {}
+    ports:
+    - published: 3000
+      target: 80
+    - target: 80
+    - published: 3030
+      target: 443
+    - target: 443
+    tty: true
+    volumes:
+    - D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi:/app:rw
+    - C:\Users\aumid\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\aumid\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\aumid\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\aumid\.nuget\packages:/root/.nuget/packages:ro
+    - D:\Projects\VisualStudio\Asakabank:/src:rw
+  pgadmin:
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    image: dpage/pgadmin4
+    ports:
+    - published: 5050
+      target: 80
+    restart: unless-stopped
+    volumes:
+    - pgadmin:/root/.pgadmin:rw
+  postgres_image:
+    environment:
+      POSTGRES_DB: userapidb
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    image: postgres:latest
+    networks:
+      asakabank.userapi-dev: {}
+    ports:
+    - published: 5432
+      target: 5432
+    restart: always
+    volumes:
+    - db_volume:/var/lib/postgresql/data:rw
+version: '3.4'
+volumes:
+  db_volume: {}
+  pgadmin: {}
