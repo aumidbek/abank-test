@@ -31,7 +31,7 @@ namespace Asakabank.UserApi {
         public void ConfigureServices(IServiceCollection services) {
             services.AddControllers(options => {
                 options.Conventions.Add(new RouteTokenTransformerConvention(
-                                            new SlugifyParameterTransformer()));
+                    new SlugifyParameterTransformer()));
                 options.Filters.Add(new ErrorFilter());
             });
 
@@ -45,18 +45,21 @@ namespace Asakabank.UserApi {
             services.AddDbContext<DataContext>(options => {
                 options
                     .UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
-                               assembly =>
-                                   assembly.MigrationsAssembly("Asakabank.UserApi"));
+                        assembly =>
+                            assembly.MigrationsAssembly("Asakabank.UserApi"));
             });
 
             services.AddAutoMapper(typeof(Startup));
 
             services.AddScoped<IDbRepository, DbRepository>();
             services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IUserService, UserService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Asakabank.UserApi", Version = "v1"});
+                var filePath = Path.Combine(AppContext.BaseDirectory, "Asakabank.UserApi.xml");
+                c.IncludeXmlComments(filePath);
             });
         }
 

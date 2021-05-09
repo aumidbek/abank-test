@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Asakabank.UserApi.Core {
     public class DataContext : DbContext {
         public DbSet<DbBlog> Blogs { get; set; }
+        public DbSet<DbUser> Users { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 

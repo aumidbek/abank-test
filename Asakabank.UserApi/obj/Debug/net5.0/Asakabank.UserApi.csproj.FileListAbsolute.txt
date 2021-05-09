@@ -40,3 +40,4 @@ D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\AutoMapper
 D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Asakabank.Base.pdb
 D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Humanizer.dll
 D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi\bin\Debug\net5.0\Asakabank.UserApi.xml

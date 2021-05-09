@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Asakabank.UserApi</name>
+    </assembly>
+    <members>
+        <member name="M:Asakabank.UserApi.Controllers.RegistrationController.Create(Asakabank.UserApi.ServiceModels.UserCreate)">
+            <summary>
+            Регистрация пользователя по номеру телефона
+            </summary>
+            <param name="user">Номер телефона</param>
+            <returns>Ид. пользователя</returns>
+        </member>
+        <member name="M:Asakabank.UserApi.Controllers.RegistrationController.Confirm(Asakabank.UserApi.ServiceModels.UserConfirm)">
+            <summary>
+            Подтверждение регистрации
+            </summary>
+            <param name="user">Данные для подтверждения</param>
+            <returns>Код и текст ошибки</returns>
+        </member>
+        <member name="M:Asakabank.UserApi.Controllers.RegistrationController.Auth(Asakabank.UserApi.ServiceModels.UserAuth)">
+            <summary>
+            Аутентификация пользователя
+            </summary>
+            <param name="user">Данные для входа</param>
+            <returns>Данные пользователя</returns>
+        </member>
+        <member name="P:Asakabank.UserApi.Models.User.Id">
+            <summary>
+            Ид. пользователя
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.Models.User.PhoneNumber">
+            <summary>
+            Номер телефона
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.Models.User.Lastname">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.Models.User.Firstname">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.Models.User.Middlename">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.Models.User.Passport">
+            <summary>
+            Серия и номер паспорта
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.Models.User.IsIdentified">
+            <summary>
+            Признак принадлежности банку
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.ServiceModels.UserAuth.UserId">
+            <summary>
+            Ид. поьзователя
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.ServiceModels.UserAuth.Password">
+            <summary>
+            Пароль (ПИН код) пользователя
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.ServiceModels.UserAuthResponse.User">
+            <summary>
+            Данные пользователя
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.ServiceModels.UserConfirm.UserId">
+            <summary>
+            Ид. пользователя
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.ServiceModels.UserConfirm.OTP">
+            <summary>
+            Одноразовый код из СМС
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.ServiceModels.UserConfirm.Password">
+            <summary>
+            Пароль (ПИН код) пользователя
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.ServiceModels.UserCreate.PhoneNumber">
+            <summary>
+            Номер телефона
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.ServiceModels.UserCreateResponse.UserId">
+            <summary>
+            Ид. пользователя
+            </summary>
+        </member>
+    </members>
+</doc>

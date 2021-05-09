@@ -24,3 +24,4 @@ D:\Projects\VisualStudio\Asakabank\bin\Debug\Asakabank.Base.dll
 D:\Projects\VisualStudio\Asakabank\bin\Debug\AutoMapper.dll
 D:\Projects\VisualStudio\Asakabank\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Projects\VisualStudio\Asakabank\bin\Debug\Asakabank.Base.pdb
+D:\Projects\VisualStudio\Asakabank\bin\Debug\Asakabank.UserApi.xml

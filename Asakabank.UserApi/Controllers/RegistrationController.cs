@@ -1,9 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Asakabank.UserApi.Base;
 using Asakabank.UserApi.Core;
-using Asakabank.UserApi.Models;
+using Asakabank.UserApi.ServiceModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -13,42 +11,61 @@ namespace Asakabank.UserApi.Controllers {
     public class RegistrationController : ControllerBase {
         private readonly ILogger<RegistrationController> _logger;
         private readonly DataContext _context;
-        private readonly IBlogService _blogService;
-        public RegistrationController(ILogger<RegistrationController> logger, IBlogService blogService) {
+        private readonly IUserService _userService;
+
+        public RegistrationController(ILogger<RegistrationController> logger, IUserService userService) {
             _logger = logger;
-            _blogService = blogService;
+            _userService = userService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get(Guid id)
-        {
-            var blog = await _blogService.Get(id);
+        /// <summary>
+        /// Регистрация пользователя по номеру телефона
+        /// </summary>
+        /// <param name="user">Номер телефона</param>
+        /// <returns>Ид. пользователя</returns>
+        [HttpPost("create")]
+        public async Task<IActionResult> Create(UserCreate user) {
+            var result = await _userService.Create(user);
 
-            return Ok(blog);
+            return Ok(result);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(Blog blog)
-        {
-            var blogId = await _blogService.Create(blog);
+        /// <summary>
+        /// Подтверждение регистрации
+        /// </summary>
+        /// <param name="user">Данные для подтверждения</param>
+        /// <returns>Код и текст ошибки</returns>
+        [HttpPost("confirm")]
+        public async Task<IActionResult> Confirm(UserConfirm user) {
+            var result = await _userService.Confirm(user);
 
-            return Ok(blogId);
+            return Ok(result);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Update(Blog blog)
-        {
-            await _blogService.Update(blog);
+        /// <summary>
+        /// Аутентификация пользователя
+        /// </summary>
+        /// <param name="user">Данные для входа</param>
+        /// <returns>Данные пользователя</returns>
+        [HttpPost("auth")]
+        public async Task<IActionResult> Auth(UserAuth user) {
+            var result = await _userService.Auth(user);
 
-            return Ok();
+            return Ok(result);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(Guid id)
-        {
-            await _blogService.Delete(id);
+        //[HttpPut]
+        //public async Task<IActionResult> Update(Blog blog) {
+        //    await _userService.Update(blog);
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
+
+        //[HttpDelete]
+        //public async Task<IActionResult> Delete(Guid id) {
+        //    await _userService.Delete(id);
+
+        //    return Ok();
+        //}
     }
 }
