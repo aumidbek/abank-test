@@ -4,7 +4,7 @@ networks:
 services:
   asakabank.userapi:
     build:
-      context: D:\Projects\VisualStudio\Asakabank
+      context: D:\Projects\VisualStudio\abank-test
       dockerfile: Asakabank.UserApi/Dockerfile
     depends_on:
       postgres_image:
@@ -23,8 +23,8 @@ services:
       target: 443
     - target: 443
     volumes:
-    - C:\Users\aumid\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-    - C:\Users\aumid\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\Developer\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Developer\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
   pgadmin:
     environment:
       PGADMIN_DEFAULT_EMAIL: pgadmin@pgadmin.org

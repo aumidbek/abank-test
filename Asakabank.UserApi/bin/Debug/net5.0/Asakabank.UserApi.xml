@@ -62,7 +62,7 @@
         </member>
         <member name="P:Asakabank.UserApi.ServiceModels.UserAuth.UserId">
             <summary>
-            Ид. поьзователя
+            Ид. пользователя
             </summary>
         </member>
         <member name="P:Asakabank.UserApi.ServiceModels.UserAuth.Password">

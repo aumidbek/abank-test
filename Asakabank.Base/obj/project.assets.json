@@ -8,27 +8,25 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\aumid\\.nuget\\packages\\": {}
+    "C:\\Users\\Developer\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.Base\\Asakabank.Base.csproj",
+      "projectUniqueName": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.Base\\Asakabank.Base.csproj",
       "projectName": "Asakabank.Base",
-      "projectPath": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.Base\\Asakabank.Base.csproj",
-      "packagesPath": "C:\\Users\\aumid\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.Base\\obj\\",
+      "projectPath": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.Base\\Asakabank.Base.csproj",
+      "packagesPath": "C:\\Users\\Developer\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.Base\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\aumid\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
+        "C:\\Users\\Developer\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -62,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

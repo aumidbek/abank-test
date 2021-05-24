@@ -4,7 +4,7 @@ networks:
 services:
   asakabank.userapi:
     build:
-      context: D:\Projects\VisualStudio\Asakabank
+      context: D:\Projects\VisualStudio\abank-test
       dockerfile: Asakabank.UserApi/Dockerfile
       labels:
         com.microsoft.created-by: visual-studio
@@ -39,12 +39,12 @@ services:
     - target: 443
     tty: true
     volumes:
-    - D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi:/app:rw
-    - C:\Users\aumid\vsdbg\vs2017u5:/remote_debugger:rw
-    - C:\Users\aumid\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
-    - C:\Users\aumid\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
-    - C:\Users\aumid\.nuget\packages:/root/.nuget/packages:ro
-    - D:\Projects\VisualStudio\Asakabank:/src:rw
+    - D:\Projects\VisualStudio\abank-test\Asakabank.UserApi:/app:rw
+    - C:\Users\Developer\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Developer\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Developer\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\Developer\.nuget\packages:/root/.nuget/packages:ro
+    - D:\Projects\VisualStudio\abank-test:/src:rw
   pgadmin:
     environment:
       PGADMIN_DEFAULT_EMAIL: pgadmin@pgadmin.org

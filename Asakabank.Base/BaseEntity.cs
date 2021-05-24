@@ -8,7 +8,7 @@ namespace Asakabank.Base {
 
         public Guid Id { get; set; }
         public bool IsDeleted { get; set; } = false;
-        public DateTime DateCreated { get; set; } = DateTime.Now;
-        public DateTime? DateUpdated { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime? UpdatedAt { get; set; }
     }
 }

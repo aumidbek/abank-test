@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1d1EHj98pB/XNdynN9XXHflmvK8nt9AUYY5th5wofMtIs9A2AmJt1K0AOQDF9nsGqbHYrnKjlRa+2aoln5zWcQ==",
+  "dgSpecHash": "+x2W4wvXTBK9t94aBSWhOYjWolFBVXLBej3EV4yiDdXFVrCbZsm9HNKq8vZf7NSqDJitWhfbkzgjYGWBSbvb7g==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.Base\\Asakabank.Base.csproj",
+  "projectFilePath": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.Base\\Asakabank.Base.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

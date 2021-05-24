@@ -46,12 +46,12 @@ namespace Asakabank.UserApi.Core {
         }
 
         public async Task Update<T>(T entity) where T : class, IEntity {
-            entity.DateUpdated = DateTime.Now;
+            entity.UpdatedAt = DateTime.Now;
             await Task.Run(() => _context.Set<T>().Update(entity));
         }
 
         public async Task UpdateRange<T>(IEnumerable<T> entities) where T : class, IEntity {
-            entities.ToList().ForEach(s => s.DateUpdated = DateTime.Now);
+            entities.ToList().ForEach(s => s.UpdatedAt = DateTime.Now);
             await Task.Run(() => _context.Set<T>().UpdateRange(entities));
         }
 

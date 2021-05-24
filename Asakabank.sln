@@ -7,7 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asakabank.UserApi", "Asakab
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3F3B95E6-158B-49ED-887A-1EE24C65CA86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asakabank.Base", "Asakabank.Base\Asakabank.Base.csproj", "{8AB8BFCF-2AFC-4CB2-977A-19ABBF183907}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asakabank.Base", "Asakabank.Base\Asakabank.Base.csproj", "{8AB8BFCF-2AFC-4CB2-977A-19ABBF183907}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{92291C6A-51B2-44CE-8D2C-6E66AFF25FF5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{01E8C758-1A84-449A-A42D-C5F0147FD4EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{9E7F02E7-BA50-4D13-BFD7-7024E3B1D069}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{7371C6B7-F530-4CCE-9A15-0E9A746E9834}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{A1A44BBF-3D46-4FA8-B9E8-DEE8DF709347}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +40,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{48E52071-E63A-4CFA-A538-9CFC5C638342} = {7371C6B7-F530-4CCE-9A15-0E9A746E9834}
+		{8AB8BFCF-2AFC-4CB2-977A-19ABBF183907} = {01E8C758-1A84-449A-A42D-C5F0147FD4EF}
+		{9E7F02E7-BA50-4D13-BFD7-7024E3B1D069} = {92291C6A-51B2-44CE-8D2C-6E66AFF25FF5}
+		{7371C6B7-F530-4CCE-9A15-0E9A746E9834} = {92291C6A-51B2-44CE-8D2C-6E66AFF25FF5}
+		{A1A44BBF-3D46-4FA8-B9E8-DEE8DF709347} = {92291C6A-51B2-44CE-8D2C-6E66AFF25FF5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94ED53BA-89A1-4E0E-98C3-A5164C1615FE}

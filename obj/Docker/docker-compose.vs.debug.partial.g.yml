@@ -14,10 +14,10 @@ services:
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
       - NUGET_FALLBACK_PACKAGES=
     volumes:
-      - D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi:/app
-      - D:\Projects\VisualStudio\Asakabank:/src
-      - C:\Users\aumid\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\aumid\.nuget\packages\:/root/.nuget/packages:ro
+      - D:\Projects\VisualStudio\abank-test\Asakabank.UserApi:/app
+      - D:\Projects\VisualStudio\abank-test:/src
+      - C:\Users\Developer\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\Developer\.nuget\packages\:/root/.nuget/packages:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
