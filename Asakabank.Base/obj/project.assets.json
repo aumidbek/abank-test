@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.Base\\Asakabank.Base.csproj",
+      "projectUniqueName": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.Base\\Asakabank.Base.csproj",
       "projectName": "Asakabank.Base",
-      "projectPath": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.Base\\Asakabank.Base.csproj",
+      "projectPath": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.Base\\Asakabank.Base.csproj",
       "packagesPath": "C:\\Users\\Developer\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.Base\\obj\\",
+      "outputPath": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.Base\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Developer\\AppData\\Roaming\\NuGet\\NuGet.Config",

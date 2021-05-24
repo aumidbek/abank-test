@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "egZ0y0+GosiXdO9IqJS+/aAaeFWbNbRmo6P3d9pe+EvPWPl9dPnXea5JQSKsNNJaUeHrXUnAzH3tcobTs+yA2Q==",
+  "dgSpecHash": "QYkdebW4pdYFvnWb+NtHdFgPhFVXn5jLtETnanCRWB+BvL8vSN4ijUdp1CzkMPzjKUJ257W/bQil4BZq5fgv8g==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.UserApi\\Asakabank.UserApi.csproj",
+  "projectFilePath": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.UserApi\\Asakabank.UserApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Developer\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Developer\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

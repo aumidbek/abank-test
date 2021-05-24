@@ -2296,11 +2296,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.UserApi\\Asakabank.UserApi.csproj",
+      "projectUniqueName": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.UserApi\\Asakabank.UserApi.csproj",
       "projectName": "Asakabank.UserApi",
-      "projectPath": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.UserApi\\Asakabank.UserApi.csproj",
+      "projectPath": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.UserApi\\Asakabank.UserApi.csproj",
       "packagesPath": "C:\\Users\\Developer\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.UserApi\\obj\\",
+      "outputPath": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.UserApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Developer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2317,8 +2317,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.Base\\Asakabank.Base.csproj": {
-              "projectPath": "D:\\Projects\\VisualStudio\\abank-test\\Asakabank.Base\\Asakabank.Base.csproj"
+            "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.Base\\Asakabank.Base.csproj": {
+              "projectPath": "D:\\Projects\\VisualStudio\\Asakabank\\Asakabank.Base\\Asakabank.Base.csproj"
             }
           }
         }

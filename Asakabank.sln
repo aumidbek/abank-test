@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{7371C6B7-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{A1A44BBF-3D46-4FA8-B9E8-DEE8DF709347}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asakabank.IdentityApi", "Services\Identity\Asakabank.IdentityApi\Asakabank.IdentityApi.csproj", "{EEC6D1A1-777B-4FD0-AB09-A74F182A754B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{8AB8BFCF-2AFC-4CB2-977A-19ABBF183907}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AB8BFCF-2AFC-4CB2-977A-19ABBF183907}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AB8BFCF-2AFC-4CB2-977A-19ABBF183907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC6D1A1-777B-4FD0-AB09-A74F182A754B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC6D1A1-777B-4FD0-AB09-A74F182A754B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC6D1A1-777B-4FD0-AB09-A74F182A754B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC6D1A1-777B-4FD0-AB09-A74F182A754B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +53,7 @@ Global
 		{9E7F02E7-BA50-4D13-BFD7-7024E3B1D069} = {92291C6A-51B2-44CE-8D2C-6E66AFF25FF5}
 		{7371C6B7-F530-4CCE-9A15-0E9A746E9834} = {92291C6A-51B2-44CE-8D2C-6E66AFF25FF5}
 		{A1A44BBF-3D46-4FA8-B9E8-DEE8DF709347} = {92291C6A-51B2-44CE-8D2C-6E66AFF25FF5}
+		{EEC6D1A1-777B-4FD0-AB09-A74F182A754B} = {9E7F02E7-BA50-4D13-BFD7-7024E3B1D069}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94ED53BA-89A1-4E0E-98C3-A5164C1615FE}
