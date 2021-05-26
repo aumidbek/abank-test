@@ -7,6 +7,7 @@ using Asakabank.UserApi.Models;
 using Asakabank.UserApi.ServiceModels;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using BCrypt.Net;
 
 namespace Asakabank.UserApi.Services {
     public class UserService : IUserService {
@@ -40,7 +41,7 @@ namespace Asakabank.UserApi.Services {
             await _dbRepository.SaveChangesAsync();
 
             return new UserCreateResponse {
-                Code = (int)ActionResult.Success,
+                Code = (int) ActionResult.Success,
                 Message = $"СМС код ({entity.OTP}) отправлен на номер {user.PhoneNumber}",
                 UserId = userId
             };
@@ -63,7 +64,7 @@ namespace Asakabank.UserApi.Services {
                     Code = -51,
                     Message = "Введен неверный код из СМС"
                 };
-            entity.Password = user.Password;
+            entity.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             await _dbRepository.Update(entity);
             await _dbRepository.SaveChangesAsync();
             return new UserConfirmResponse {
@@ -74,16 +75,16 @@ namespace Asakabank.UserApi.Services {
 
         public async Task<UserAuthResponse> Auth(UserCred userCred) {
             var entity = await _dbRepository.Get<DbUser>().FirstOrDefaultAsync(x => x.Username == userCred.Username);
-            if (entity == null)
-                return new UserAuthResponse {
-                    Code = (int) ActionResult.ObjectNotFound,
-                    Message = ActionResult.ObjectNotFound.ToDescription()
-                };
+            //if (entity == null)
+            //    return new UserAuthResponse {
+            //        Code = (int) ActionResult.ObjectNotFound,
+            //        Message = ActionResult.ObjectNotFound.ToDescription()
+            //    };
 
-            if (!entity.Password.Equals(userCred.Password))
+            if (entity == null || !BCrypt.Net.BCrypt.Verify(userCred.Password, entity.Password))
                 return new UserAuthResponse {
                     Code = -52,
-                    Message = "Введен неверный пароль"
+                    Message = "Неверный логин или пароль"
                 };
             var model = _mapper.Map<User>(entity);
             return new UserAuthResponse {

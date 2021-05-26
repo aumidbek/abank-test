@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,55 +8,65 @@ using Asakabank.IdentityApi.Entities;
 using Asakabank.IdentityApi.Helpers;
 using Asakabank.IdentityApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Asakabank.IdentityApi.Logic {
     public class JwtAuthenticationManager : IJwtAuthenticationManager {
-        private readonly IDictionary<string, string> _users = new Dictionary<string, string> {
-            {"test1", "password1"},
-            {"test2", "password2"}
-        };
-
         private readonly string _tokenKey;
+        private readonly string _userApiUri;
         private readonly IRefreshTokenGenerator _refreshTokenGenerator;
-        private readonly IDbRepository _dbRepository;
 
-        public JwtAuthenticationManager(string tokenKey, IRefreshTokenGenerator refreshTokenGenerator,
-            IDbRepository dbRepository) {
+        private readonly IServiceProvider _serviceProvider;
+        //private readonly IDbRepository _dbRepository;
+
+        public JwtAuthenticationManager(string tokenKey, string userApiUri,
+            IRefreshTokenGenerator refreshTokenGenerator,
+            IServiceProvider serviceProvider) {
             _tokenKey = tokenKey;
+            _userApiUri = userApiUri;
             _refreshTokenGenerator = refreshTokenGenerator;
-            _dbRepository = dbRepository;
+            _serviceProvider = serviceProvider;
+            //_dbRepository = dbRepository;
         }
 
         public async Task<AuthenticationResponse> Authenticate(string username, string password) {
-            //todo: Get user from UserAPI microservice using RabbitMQ
-            if (!_users.Any(u => u.Key == username && u.Value == password))
+            var userAuthResult =
+                await ApiClient.UserAuth(_userApiUri, new UserCred {Username = username, Password = password});
+            if (userAuthResult?.Code != 0)
                 return null;
 
             var tokenCreatedAt = DateTime.Now;
             var token = GenerateTokenString(username, tokenCreatedAt);
             var refreshToken = _refreshTokenGenerator.GenerateToken();
 
-            var entity = await _dbRepository.Get<DbUserToken>().FirstOrDefaultAsync(x => x.UserId == Guid.NewGuid());//todo: fix this UserId
-            if (entity == null) {
-                entity = new DbUserToken(Guid.NewGuid()) {
-                    Username = "test1",
-                    Token = token,
-                    RefreshToken = refreshToken,
-                    TokenCreatedAt = tokenCreatedAt,
-                    Expires = tokenCreatedAt.AddMinutes(2),
-                    UserId = Guid.NewGuid()
-                };
-                await _dbRepository.Add(entity);
+            using (var scope = _serviceProvider.CreateScope()) {
+                var dbRepository = scope.ServiceProvider.GetRequiredService<IDbRepository>();
+
+                var entity = await dbRepository.Get<DbUserToken>()
+                    .FirstOrDefaultAsync(x => x.UserId == userAuthResult.User.Id);
+                if (entity == null) {
+                    entity = new DbUserToken(Guid.NewGuid()) {
+                        Username = userAuthResult.User.Username,
+                        Token = token,
+                        RefreshToken = refreshToken,
+                        TokenCreatedAt = tokenCreatedAt,
+                        Expires = tokenCreatedAt.AddMinutes(2),
+                        UserId = userAuthResult.User.Id
+                    };
+                    await dbRepository.Add(entity);
+                }
+                else {
+                    entity.Token = token;
+                    entity.RefreshToken = refreshToken;
+                    entity.TokenCreatedAt = tokenCreatedAt;
+                    entity.Expires = tokenCreatedAt.AddMinutes(2);
+                    await dbRepository.Update(entity);
+                }
+
+                await dbRepository.SaveChangesAsync();
             }
-            else {
-                entity.Token = token;
-                entity.RefreshToken = refreshToken;
-                entity.TokenCreatedAt = tokenCreatedAt;
-                entity.Expires = tokenCreatedAt.AddMinutes(2);
-                await _dbRepository.Update(entity);
-            }
-            
+
             return new AuthenticationResponse {
                 Token = token,
                 RefreshToken = refreshToken,
@@ -69,7 +77,11 @@ namespace Asakabank.IdentityApi.Logic {
         }
 
         public async Task<AuthenticationResponse> Authenticate(string username, Claim[] claims, string refreshToken) {
-            var entity = await _dbRepository.Get<DbUserToken>().FirstOrDefaultAsync(x => x.UserId == Guid.NewGuid());//todo: fix this UserId
+            using var scope = _serviceProvider.CreateScope();
+            var dbRepository = scope.ServiceProvider.GetRequiredService<IDbRepository>();
+
+            var entity =
+                await dbRepository.Get<DbUserToken>().FirstOrDefaultAsync(x => x.Username.Equals(username));
             if (entity == null || !refreshToken.Equals(entity.RefreshToken)) {
                 return new AuthenticationResponse {
                     Code = (int) ActionResult.InvalidTokenPassed,
@@ -85,7 +97,8 @@ namespace Asakabank.IdentityApi.Logic {
             entity.RefreshToken = refreshToken;
             entity.TokenCreatedAt = tokenCreatedAt;
             entity.Expires = tokenCreatedAt.AddMinutes(2);
-            await _dbRepository.Update(entity);
+            await dbRepository.Update(entity);
+            await dbRepository.SaveChangesAsync();
             
             return new AuthenticationResponse {
                 Token = token,

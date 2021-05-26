@@ -1,7 +1,45 @@
-networks:
-  asakabank.userapi-dev:
-    driver: bridge
 services:
+  asakabank.identityapi:
+    build:
+      context: D:\Projects\VisualStudio\Asakabank
+      dockerfile: Services/Identity/Asakabank.IdentityApi/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Asakabank.IdentityApi
+      target: base
+    container_name: Asakabank.IdentityApi
+    depends_on:
+      postgres_image:
+        condition: service_started
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: ''
+    image: asakabankidentityapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net5.0/Asakabank.IdentityApi.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 3001
+      target: 80
+    - target: 80
+    - published: 3031
+      target: 443
+    - target: 443
+    tty: true
+    volumes:
+    - D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi:/app:rw
+    - C:\Users\Developer\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Developer\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Developer\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\Developer\.nuget\packages:/root/.nuget/packages:ro
+    - D:\Projects\VisualStudio\Asakabank:/src:rw
   asakabank.userapi:
     build:
       context: D:\Projects\VisualStudio\Asakabank
@@ -28,8 +66,6 @@ services:
         dotnet); then kill $$PID; fi"
       com.microsoft.visualstudio.debuggee.program: dotnet
       com.microsoft.visualstudio.debuggee.workingdirectory: /app
-    networks:
-      asakabank.userapi-dev: {}
     ports:
     - published: 3000
       target: 80
@@ -62,8 +98,6 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
     image: postgres:latest
-    networks:
-      asakabank.userapi-dev: {}
     ports:
     - published: 5432
       target: 5432

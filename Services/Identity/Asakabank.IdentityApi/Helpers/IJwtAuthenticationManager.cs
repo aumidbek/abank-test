@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Asakabank.Base;
 using Asakabank.IdentityApi.Models;
 
 namespace Asakabank.IdentityApi.Helpers {

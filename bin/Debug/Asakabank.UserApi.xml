@@ -4,25 +4,25 @@
         <name>Asakabank.UserApi</name>
     </assembly>
     <members>
-        <member name="M:Asakabank.UserApi.Controllers.RegistrationController.Create(Asakabank.UserApi.ServiceModels.UserCreate)">
+        <member name="M:Asakabank.UserApi.Controllers.UserController.Create(Asakabank.UserApi.ServiceModels.UserCreate)">
             <summary>
             Регистрация пользователя по номеру телефона
             </summary>
             <param name="user">Номер телефона</param>
             <returns>Ид. пользователя</returns>
         </member>
-        <member name="M:Asakabank.UserApi.Controllers.RegistrationController.Confirm(Asakabank.UserApi.ServiceModels.UserConfirm)">
+        <member name="M:Asakabank.UserApi.Controllers.UserController.Confirm(Asakabank.UserApi.ServiceModels.UserConfirm)">
             <summary>
             Подтверждение регистрации
             </summary>
             <param name="user">Данные для подтверждения</param>
             <returns>Код и текст ошибки</returns>
         </member>
-        <member name="M:Asakabank.UserApi.Controllers.RegistrationController.Auth(Asakabank.UserApi.ServiceModels.UserAuth)">
+        <member name="M:Asakabank.UserApi.Controllers.UserController.Auth(Asakabank.UserApi.ServiceModels.UserCred)">
             <summary>
             Аутентификация пользователя
             </summary>
-            <param name="user">Данные для входа</param>
+            <param name="user">Данные для аутентификации</param>
             <returns>Данные пользователя</returns>
         </member>
         <member name="P:Asakabank.UserApi.Models.User.Id">
@@ -30,9 +30,9 @@
             Ид. пользователя
             </summary>
         </member>
-        <member name="P:Asakabank.UserApi.Models.User.PhoneNumber">
+        <member name="P:Asakabank.UserApi.Models.User.Username">
             <summary>
-            Номер телефона
+            Имя пользователя/Номер телефона
             </summary>
         </member>
         <member name="P:Asakabank.UserApi.Models.User.Lastname">
@@ -58,16 +58,6 @@
         <member name="P:Asakabank.UserApi.Models.User.IsIdentified">
             <summary>
             Признак принадлежности банку
-            </summary>
-        </member>
-        <member name="P:Asakabank.UserApi.ServiceModels.UserAuth.UserId">
-            <summary>
-            Ид. пользователя
-            </summary>
-        </member>
-        <member name="P:Asakabank.UserApi.ServiceModels.UserAuth.Password">
-            <summary>
-            Пароль (ПИН код) пользователя
             </summary>
         </member>
         <member name="P:Asakabank.UserApi.ServiceModels.UserAuthResponse.User">
@@ -98,6 +88,16 @@
         <member name="P:Asakabank.UserApi.ServiceModels.UserCreateResponse.UserId">
             <summary>
             Ид. пользователя
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.ServiceModels.UserCred.Username">
+            <summary>
+            Логин
+            </summary>
+        </member>
+        <member name="P:Asakabank.UserApi.ServiceModels.UserCred.Password">
+            <summary>
+            Пароль (ПИН код) пользователя
             </summary>
         </member>
     </members>

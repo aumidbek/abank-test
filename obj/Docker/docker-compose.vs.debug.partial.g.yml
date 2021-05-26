@@ -1,6 +1,33 @@
 version: '3.4'
 
 services:
+  asakabank.identityapi:
+    image: asakabankidentityapi:dev
+    container_name: Asakabank.IdentityApi
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Asakabank.IdentityApi"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=
+    volumes:
+      - D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi:/app
+      - D:\Projects\VisualStudio\Asakabank:/src
+      - C:\Users\Developer\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\Developer\.nuget\packages\:/root/.nuget/packages:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/net5.0/Asakabank.IdentityApi.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
   asakabank.userapi:
     image: asakabankuserapi:dev
     container_name: Asakabank.UserApi
@@ -12,19 +39,19 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_asakabank.userapi$
+      - NUGET_FALLBACK_PACKAGES=
     volumes:
       - D:\Projects\VisualStudio\Asakabank\Asakabank.UserApi:/app
       - D:\Projects\VisualStudio\Asakabank:/src
       - C:\Users\Developer\vsdbg\vs2017u5:/remote_debugger:rw
-#$nuget_volume_mapping_asakabank.userapi$
+      - C:\Users\Developer\.nuget\packages\:/root/.nuget/packages:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_asakabank.userapi$ \"/src/../abank-test/Asakabank.UserApi/bin/Debug/net5.0/Asakabank.UserApi.dll\""
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/net5.0/Asakabank.UserApi.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true

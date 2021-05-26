@@ -56,7 +56,6 @@ D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\bin\D
 D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
-D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\obj\Debug\net5.0\Asakabank.IdentityApi.csprojAssemblyReference.cache
 D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\obj\Debug\net5.0\Asakabank.IdentityApi.GeneratedMSBuildEditorConfig.editorconfig
 D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\obj\Debug\net5.0\Asakabank.IdentityApi.AssemblyInfoInputs.cache
 D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\obj\Debug\net5.0\Asakabank.IdentityApi.AssemblyInfo.cs
@@ -74,3 +73,4 @@ D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\obj\D
 D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\obj\Debug\net5.0\Asakabank.IdentityApi.genruntimeconfig.cache
 D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\bin\Debug\net5.0\Asakabank.Base.dll
 D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\bin\Debug\net5.0\Asakabank.Base.pdb
+D:\Projects\VisualStudio\Asakabank\Services\Identity\Asakabank.IdentityApi\obj\Debug\net5.0\Asakabank.IdentityApi.csproj.AssemblyReference.cache

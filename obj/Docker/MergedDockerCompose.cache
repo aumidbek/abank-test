@@ -1,7 +1,25 @@
-networks:
-  asakabank.userapi-dev:
-    driver: bridge
 services:
+  asakabank.identityapi:
+    build:
+      context: D:\Projects\VisualStudio\Asakabank
+      dockerfile: Services/Identity/Asakabank.IdentityApi/Dockerfile
+    depends_on:
+      postgres_image:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: asakabankidentityapi
+    ports:
+    - published: 3001
+      target: 80
+    - target: 80
+    - published: 3031
+      target: 443
+    - target: 443
+    volumes:
+    - C:\Users\Developer\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Developer\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
   asakabank.userapi:
     build:
       context: D:\Projects\VisualStudio\Asakabank
@@ -13,8 +31,6 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
     image: asakabankuserapi
-    networks:
-      asakabank.userapi-dev: {}
     ports:
     - published: 3000
       target: 80
@@ -42,8 +58,6 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
     image: postgres:latest
-    networks:
-      asakabank.userapi-dev: {}
     ports:
     - published: 5432
       target: 5432

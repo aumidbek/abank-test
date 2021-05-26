@@ -38,6 +38,7 @@ namespace Asakabank.IdentityApi {
             });
 
             var tokenKey = Configuration.GetValue<string>("TokenKey");
+            var userApiUri = Configuration.GetValue<string>("UserApiUri");
             var key = Encoding.ASCII.GetBytes(tokenKey);
 
             services.AddAuthentication(x => {
@@ -56,7 +57,7 @@ namespace Asakabank.IdentityApi {
                         ClockSkew = TimeSpan.Zero,
                     };
                 });
-            
+
             services.AddDbContext<DataContext>(options => {
                 options
                     .UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
@@ -69,9 +70,7 @@ namespace Asakabank.IdentityApi {
                 new JwtRefreshManager(key, x.GetService<IJwtAuthenticationManager>()));
             services.AddSingleton<IRefreshTokenGenerator, RefreshTokenGenerator>();
             services.AddSingleton<IJwtAuthenticationManager>(x =>
-                new JwtAuthenticationManager(tokenKey, x.GetService<IRefreshTokenGenerator>(),
-                    x.GetService<IDbRepository>()));
-
+                new JwtAuthenticationManager(tokenKey, userApiUri, x.GetService<IRefreshTokenGenerator>(), x));
 
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Asakabank.IdentityApi", Version = "v1"});
@@ -82,16 +81,19 @@ namespace Asakabank.IdentityApi {
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Asakabank.IdentityApi v1"));
+            }
+
+            using (app.ApplicationServices.CreateScope()) {
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Asakabank.IdentityApi v1"));
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }

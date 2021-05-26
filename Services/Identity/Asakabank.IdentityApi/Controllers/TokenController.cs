@@ -30,7 +30,7 @@ namespace Asakabank.IdentityApi.Controllers {
             if (authResult == null)
                 return Unauthorized();
 
-            return Ok(authResult);
+            return Ok(authResult.Result);
         }
 
         [AllowAnonymous]
@@ -41,7 +41,7 @@ namespace Asakabank.IdentityApi.Controllers {
             if (authResult == null)
                 return Unauthorized();
 
-            return Ok(authResult);
+            return Ok(authResult.Result);
         }
     }
 }

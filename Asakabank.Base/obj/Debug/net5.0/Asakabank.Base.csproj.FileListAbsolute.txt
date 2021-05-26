@@ -2,7 +2,6 @@ D:\Projects\VisualStudio\Asakabank\Asakabank.Base\bin\Debug\net5.0\Asakabank.Bas
 D:\Projects\VisualStudio\Asakabank\Asakabank.Base\bin\Debug\net5.0\Asakabank.Base.dll
 D:\Projects\VisualStudio\Asakabank\Asakabank.Base\bin\Debug\net5.0\ref\Asakabank.Base.dll
 D:\Projects\VisualStudio\Asakabank\Asakabank.Base\bin\Debug\net5.0\Asakabank.Base.pdb
-D:\Projects\VisualStudio\Asakabank\Asakabank.Base\obj\Debug\net5.0\Asakabank.Base.csprojAssemblyReference.cache
 D:\Projects\VisualStudio\Asakabank\Asakabank.Base\obj\Debug\net5.0\Asakabank.Base.GeneratedMSBuildEditorConfig.editorconfig
 D:\Projects\VisualStudio\Asakabank\Asakabank.Base\obj\Debug\net5.0\Asakabank.Base.AssemblyInfoInputs.cache
 D:\Projects\VisualStudio\Asakabank\Asakabank.Base\obj\Debug\net5.0\Asakabank.Base.AssemblyInfo.cs
@@ -22,3 +21,4 @@ D:\Projects\VisualStudio\abank-test\Asakabank.Base\obj\Debug\net5.0\Asakabank.Ba
 D:\Projects\VisualStudio\abank-test\Asakabank.Base\obj\Debug\net5.0\Asakabank.Base.dll
 D:\Projects\VisualStudio\abank-test\Asakabank.Base\obj\Debug\net5.0\ref\Asakabank.Base.dll
 D:\Projects\VisualStudio\abank-test\Asakabank.Base\obj\Debug\net5.0\Asakabank.Base.pdb
+D:\Projects\VisualStudio\Asakabank\Asakabank.Base\obj\Debug\net5.0\Asakabank.Base.csproj.AssemblyReference.cache

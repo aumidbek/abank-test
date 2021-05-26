@@ -7,12 +7,11 @@ using Microsoft.Extensions.Logging;
 namespace Asakabank.UserApi.Controllers {
     [ApiController]
     [Route("[controller]")]
-    public class RegistrationController : ControllerBase {
-        private readonly ILogger<RegistrationController> _logger;
-        private readonly DataContext _context;
+    public class UserController : ControllerBase {
+        private readonly ILogger<UserController> _logger;
         private readonly IUserService _userService;
 
-        public RegistrationController(ILogger<RegistrationController> logger, IUserService userService) {
+        public UserController(ILogger<UserController> logger, IUserService userService) {
             _logger = logger;
             _userService = userService;
         }
@@ -44,7 +43,7 @@ namespace Asakabank.UserApi.Controllers {
         /// <summary>
         /// Аутентификация пользователя
         /// </summary>
-        /// <param name="user">Данные для входа</param>
+        /// <param name="user">Данные для аутентификации</param>
         /// <returns>Данные пользователя</returns>
         [HttpPost("auth")]
         public async Task<IActionResult> Auth(UserCred user) {
@@ -52,19 +51,5 @@ namespace Asakabank.UserApi.Controllers {
 
             return Ok(result);
         }
-
-        //[HttpPut]
-        //public async Task<IActionResult> Update(Blog blog) {
-        //    await _userService.Update(blog);
-
-        //    return Ok();
-        //}
-
-        //[HttpDelete]
-        //public async Task<IActionResult> Delete(Guid id) {
-        //    await _userService.Delete(id);
-
-        //    return Ok();
-        //}
     }
 }

@@ -1,8 +1,8 @@
 version: '3.4'
 
-networks:
-  asakabank.userapi-dev:
-    driver: bridge 
+#networks:
+#  asakabank.userapi-dev:
+#    driver: bridge 
 
 services:
   asakabank.userapi:
@@ -17,9 +17,24 @@ services:
       - "3030:443"
     #environment:
       #DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=userapidb;username=postgres;password=postgres"
-    networks:
-      - asakabank.userapi-dev  
+    #networks:
+    #  - asakabank.userapi-dev  
   
+  asakabank.identityapi:
+    image: ${DOCKER_REGISTRY-}asakabankidentityapi
+    depends_on:
+        - "postgres_image"
+    build:
+        context: .
+        dockerfile: Services/Identity/Asakabank.IdentityApi/Dockerfile
+    ports:
+        - "3001:80"
+        - "3031:443"
+    #environment:
+        #DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=identityapidb;username=postgres;password=postgres"
+    #networks:
+    #    - asakabank.identityapi-dev
+
   postgres_image:
     image: postgres:latest
     ports:
@@ -32,8 +47,9 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: "userapidb"
-    networks:
-      - asakabank.userapi-dev
+    #networks:
+    #  - asakabank.userapi-dev
+
   pgadmin:
     image: dpage/pgadmin4
     environment:
@@ -44,6 +60,7 @@ services:
     restart: unless-stopped
     volumes:
       - pgadmin:/root/.pgadmin
+
 volumes:
   db_volume:
   pgadmin:
