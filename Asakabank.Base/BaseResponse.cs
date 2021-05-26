@@ -4,6 +4,7 @@
         /// Код ошибки
         /// </summary>
         public int Code { get; set; }
+
         /// <summary>
         /// Текст ошибки
         /// </summary>

@@ -1,11 +1,11 @@
 ﻿using System;
 
 namespace Asakabank.UserApi.ServiceModels {
-    public class UserAuth {
+    public class UserCred {
         /// <summary>
-        /// Ид. пользователя
+        /// Логин
         /// </summary>
-        public Guid UserId { get; set; }
+        public string Username { get; set; }
 
         /// <summary>
         /// Пароль (ПИН код) пользователя

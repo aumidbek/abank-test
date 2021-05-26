@@ -11,7 +11,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Asakabank.Base;
-using Asakabank.UserApi.Base;
 using Asakabank.UserApi.Core;
 using Asakabank.UserApi.Services;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
@@ -52,7 +51,6 @@ namespace Asakabank.UserApi {
             services.AddAutoMapper(typeof(Startup));
 
             services.AddScoped<IDbRepository, DbRepository>();
-            services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<IUserService, UserService>();
 
             services.AddControllers();

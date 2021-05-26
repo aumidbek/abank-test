@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Asakabank.UserApi.Base;
 using Asakabank.UserApi.Core;
 using Asakabank.UserApi.ServiceModels;
 using Microsoft.AspNetCore.Mvc;
@@ -48,7 +47,7 @@ namespace Asakabank.UserApi.Controllers {
         /// <param name="user">Данные для входа</param>
         /// <returns>Данные пользователя</returns>
         [HttpPost("auth")]
-        public async Task<IActionResult> Auth(UserAuth user) {
+        public async Task<IActionResult> Auth(UserCred user) {
             var result = await _userService.Auth(user);
 
             return Ok(result);

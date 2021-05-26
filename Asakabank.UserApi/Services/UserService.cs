@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Asakabank.Base;
-using Asakabank.UserApi.Base;
+using Asakabank.UserApi.Core;
 using Asakabank.UserApi.Entities;
 using Asakabank.UserApi.Models;
 using Asakabank.UserApi.ServiceModels;
@@ -20,11 +20,11 @@ namespace Asakabank.UserApi.Services {
 
         public async Task<UserCreateResponse> Create(UserCreate user) {
             var rnd = new Random();
-            var entity = await _dbRepository.Get<DbUser>().FirstOrDefaultAsync(x => x.PhoneNumber == user.PhoneNumber);
+            var entity = await _dbRepository.Get<DbUser>().FirstOrDefaultAsync(x => x.Username == user.PhoneNumber);
             Guid userId;
             if (entity == null) {
                 entity = new DbUser(Guid.NewGuid()) {
-                    PhoneNumber = user.PhoneNumber,
+                    Username = user.PhoneNumber,
                     OTP = rnd.Next(10000, 99999).ToString(),
                     OTPSentTime = DateTime.Now
                 };
@@ -40,7 +40,7 @@ namespace Asakabank.UserApi.Services {
             await _dbRepository.SaveChangesAsync();
 
             return new UserCreateResponse {
-                Code = 0,
+                Code = (int)ActionResult.Success,
                 Message = $"СМС код ({entity.OTP}) отправлен на номер {user.PhoneNumber}",
                 UserId = userId
             };
@@ -50,8 +50,8 @@ namespace Asakabank.UserApi.Services {
             var entity = await _dbRepository.Get<DbUser>().FirstOrDefaultAsync(x => x.Id == user.UserId);
             if (entity == null)
                 return new UserConfirmResponse {
-                    Code = -101,
-                    Message = "Object not found"
+                    Code = (int) ActionResult.ObjectNotFound,
+                    Message = ActionResult.ObjectNotFound.ToDescription()
                 };
             if (Math.Abs((DateTime.Now - entity.OTPSentTime).TotalSeconds) > 30)
                 return new UserConfirmResponse {
@@ -67,28 +67,28 @@ namespace Asakabank.UserApi.Services {
             await _dbRepository.Update(entity);
             await _dbRepository.SaveChangesAsync();
             return new UserConfirmResponse {
-                Code = 0,
-                Message = "Успешно"
+                Code = (int) ActionResult.Success,
+                Message = ActionResult.Success.ToDescription()
             };
         }
 
-        public async Task<UserAuthResponse> Auth(UserAuth user) {
-            var entity = await _dbRepository.Get<DbUser>().FirstOrDefaultAsync(x => x.Id == user.UserId);
+        public async Task<UserAuthResponse> Auth(UserCred userCred) {
+            var entity = await _dbRepository.Get<DbUser>().FirstOrDefaultAsync(x => x.Username == userCred.Username);
             if (entity == null)
                 return new UserAuthResponse {
-                    Code = -101,
-                    Message = "Object not found"
+                    Code = (int) ActionResult.ObjectNotFound,
+                    Message = ActionResult.ObjectNotFound.ToDescription()
                 };
 
-            if (!entity.Password.Equals(user.Password))
+            if (!entity.Password.Equals(userCred.Password))
                 return new UserAuthResponse {
                     Code = -52,
                     Message = "Введен неверный пароль"
                 };
             var model = _mapper.Map<User>(entity);
             return new UserAuthResponse {
-                Code = 0,
-                Message = "Успешно",
+                Code = (int) ActionResult.Success,
+                Message = ActionResult.Success.ToDescription(),
                 User = model
             };
         }

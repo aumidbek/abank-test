@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 
 # Explicitly ask for path to be added
-ENV PATH="${PATH}:/root/.dotnet/tools"
+#ENV PATH="${PATH}:/root/.dotnet/tools"
 
 #RUN dotnet tool install --global dotnet-ef
 

@@ -8,9 +8,9 @@ namespace Asakabank.UserApi.Models {
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Номер телефона
+        /// Имя пользователя/Номер телефона
         /// </summary>
-        public string PhoneNumber { get; set; }
+        public string Username { get; set; }
 
         /// <summary>
         /// Фамилия
